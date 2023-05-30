@@ -11,11 +11,16 @@
 
   //p
   --clr-secondary-1: #959a9c;
-
+  --clr-secondry-2: #fff;
   // radius
   --border-radius: 5px;
   // footer
+
   --bg-clr-2: #f0f3f2;
+  --bg-clr-3: #08ac0a;
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
 }
 html {
   scroll-behavior: smooth;
@@ -70,4 +75,17 @@ h6 {
   border: 0;
   border-radius: var(--border-radius);
   background-color: transparent;
+}
+// custom-shared
+.auth-form {
+  width: 70%;
+}
+
+button {
+  align-self: flex-end;
+  background-color: var(--bg-clr-3);
+  color: var(--clr-secondry-2);
+}
+button:disabled {
+  @include opacity(0.5);
 }

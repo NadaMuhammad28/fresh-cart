@@ -1,19 +1,49 @@
-<main>
+<main class="section">
   <div class="container">
-    <img [src]="productDetails.image" [alt]="productDetails.title" />
+    <div
+      class="alert alert-danger"
+      *ngIf="!productDetails; else productWrapper"
+    >
+      product not found
+    </div>
+    <ng-template #productWrapper>
+      <div class="product-wrapper">
+        <!-- card left -->
+        <img [src]="productDetails.image" [alt]="productDetails.title" />
+        <!--  -->
+        <!-- card right -->
+        <article class="product-content">
+          <h1 class="mat-display-5">hello</h1>
+          <h2 class="mat-h2 mat-title">{{ productDetails.title }}</h2>
+          <app-product-reviews
+            [productRating]="productDetails.rating"
+          ></app-product-reviews>
+          <!-- ------------------------------------- -->
+          <div class="product-price">
+            <p class="new-price">
+              <span>{{ productDetails.price }} EGP</span>
+            </p>
+          </div>
 
-    <article>
-      <h2>{{ productDetails.title }}</h2>
-      <p>{{ productDetails.description }}</p>
-      <div>
-        <span>{{ productDetails.category }}</span>
-        <p>{{ productDetails.price }}</p>
-      </div>
+          <div class="product-detail">
+            <p>
+              {{ productDetails.description }}
+            </p>
+          </div>
 
-      <div>
-        <input type="number" value="1" min="1" [(ngModel)]="productQuantity" />
-        <button (click)="onAddToCart()">add to cart</button>
+          <div class="purchase-info">
+            <input
+              type="number"
+              min="1"
+              name="quantity"
+              [(ngModel)]="productQuantity"
+            />
+            <button (click)="onAddToCart()" type="button" class="btn">
+              Add to Cart <i class="fas fa-shopping-cart"></i>
+            </button>
+          </div>
+        </article>
       </div>
-    </article>
+    </ng-template>
   </div>
 </main>

@@ -5,24 +5,26 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CartService {
-  private cartKey = 'myCart'; // change this to your own cart key
+  private cartKey = 'myCart';
 
   constructor(private util: UtilityService) {}
 
   getCartFromLocalStorage(): CartProduct[] {
     const cart: CartProduct[] =
-      this.util.readFromLocalStorage<CartProduct[]>('cart') || [];
+      this.util.readFromLocalStorage<CartProduct[]>(this.cartKey) || [];
     console.log(cart);
     return cart;
   }
   addToCart(product: CartProduct): void {
     const cart = this.getCartFromLocalStorage();
+    console.log('ser', cart);
+
     const existingProduct = cart.find((p) => p.id === product.id);
     if (existingProduct) {
-      existingProduct.quantity += product.quantity;
+      existingProduct.quantity = +existingProduct.quantity + +product.quantity;
     } else {
       cart.push(product);
     }
-    localStorage.setItem(this.cartKey, JSON.stringify(cart));
+    this.util.writeToLocalStorage(this.cartKey, cart);
   }
 }
