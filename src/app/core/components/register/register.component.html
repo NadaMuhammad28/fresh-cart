@@ -2,22 +2,20 @@
   <div class="container d-flex d-flex-center">
     <form
       class="d-flex d-flex-col auth-form"
-      [formGroup]="loginForm"
+      [formGroup]="registerForm"
       (ngSubmit)="onSubmit()"
     >
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" fullWidth formControlName="email" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
+      <mat-form-field
+        appearance="outline"
+        *ngFor="let textField of registerationFormFields"
+      >
+        <mat-label>{{ textField.name }}</mat-label>
         <input
           matInput
-          placeholder="Password"
-          type="password"
+          [placeholder]="textField.placeHolder"
           fullWidth
-          formControlName="password"
+          [formControlName]="textField.name"
+          [type]="textField?.type ? textField?.type : 'text'"
         />
       </mat-form-field>
 
@@ -25,10 +23,10 @@
         mat-raised-button
         class="auth-form-btn"
         type="submit"
-        [disabled]="loginForm.status.toLowerCase() === 'invalid'"
+        [disabled]="registerForm.status.toLowerCase() === 'invalid'"
         fullWidth
       >
-        Login
+        Register
       </button>
     </form>
   </div>

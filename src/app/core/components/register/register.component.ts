@@ -7,8 +7,40 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  registerationFormFields!: any[];
   registerForm!: FormGroup;
-  constructor() {}
+  constructor() {
+    this.registerationFormFields = [
+      {
+        id: 1,
+        name: 'name',
+        placeHolder: 'Name',
+      },
+      {
+        id: 2,
+        name: 'email',
+        placeHolder: 'Email',
+      },
+      {
+        id: 3,
+        name: 'password',
+        placeHolder: 'Password',
+        type: 'password',
+      },
+      {
+        id: 4,
+        name: 'repassword',
+        placeHolder: 'Re-enter Password',
+        type: 'password',
+      },
+      {
+        id: 5,
+        name: 'phone',
+        placeHolder: 'Phone Number',
+        type: 'tel',
+      },
+    ];
+  }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
