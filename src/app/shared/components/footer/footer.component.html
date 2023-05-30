@@ -1,0 +1,24 @@
+<footer>
+  <div class="container d-flex d-flex-col footer-content-wrapper">
+    <header class="d-flex d-flex-col">
+      <h3>get freshCart app</h3>
+      <p>we will send you a link, open it on your phone to download the app.</p>
+    </header>
+    <form class="app-link-form d-flex">
+      <input placeholder="email.." />
+      <button class="btn share-link-btn">share app link</button>
+    </form>
+    <hr />
+    <div class="d-flex">
+      <h5>payment partners</h5>
+      <div>
+        <img
+          *ngFor="let partner of paymentPartnersLogos"
+          [alt]="partner.alt"
+          [src]="partner.image"
+          trackBy="trackByFn"
+        />
+      </div>
+    </div>
+  </div>
+</footer>

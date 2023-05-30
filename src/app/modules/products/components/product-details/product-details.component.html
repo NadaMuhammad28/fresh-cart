@@ -1,0 +1,19 @@
+<main>
+  <div class="container">
+    <img [src]="productDetails.image" [alt]="productDetails.title" />
+
+    <article>
+      <h2>{{ productDetails.title }}</h2>
+      <p>{{ productDetails.description }}</p>
+      <div>
+        <span>{{ productDetails.category }}</span>
+        <p>{{ productDetails.price }}</p>
+      </div>
+
+      <div>
+        <input type="number" value="1" min="1" [(ngModel)]="productQuantity" />
+        <button (click)="onAddToCart()">add to cart</button>
+      </div>
+    </article>
+  </div>
+</main>

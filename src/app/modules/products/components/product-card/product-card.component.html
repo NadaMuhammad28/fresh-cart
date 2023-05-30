@@ -1,0 +1,13 @@
+<article class="product-card-wrapper">
+  <mat-card>
+    <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" />
+    <mat-card-content>
+      <span>{{ product.category }}</span>
+      <h4>{{ product.title }}</h4>
+    </mat-card-content>
+    <mat-card-footer>
+      <span>{{ product.price | currency : "EGP" : true }}</span>
+      <button mat-button>Add to Cart</button>
+    </mat-card-footer>
+  </mat-card>
+</article>

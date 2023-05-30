@@ -1,0 +1,6 @@
+.product-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(1fr);
+  align-items: stretch;
+}

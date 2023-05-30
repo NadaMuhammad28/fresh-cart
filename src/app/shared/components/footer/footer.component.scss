@@ -1,0 +1,19 @@
+footer {
+  background-color: var(--bg-clr-2);
+  padding: var(--wrapper-padding);
+}
+.footer-content-wrapper {
+  gap: 2rem;
+}
+footer header {
+  gap: 0.5rem;
+}
+.app-link-form {
+  background-color: turquoise;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+footer header p {
+  color: var(--clr-secondary-1);
+}

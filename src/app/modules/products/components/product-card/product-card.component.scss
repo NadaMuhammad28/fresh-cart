@@ -1,0 +1,10 @@
+.product-card-wrapper {
+  padding: 0 2rem;
+  height: 100%;
+  // background-color: violet;
+}
+.product-card-wrapper img {
+  object-fit: cover;
+  max-width: 100%;
+  height: 300px;
+}
