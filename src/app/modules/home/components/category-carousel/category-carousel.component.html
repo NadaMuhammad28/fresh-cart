@@ -1,0 +1,19 @@
+<header>
+  <owl-carousel-o [options]="customOptions" class="slider">
+    <ng-container *ngFor="let category of categories">
+      <ng-template carouselSlide [id]="category">
+        <article class="category-slide">
+          <a
+            class="overlay d-flex d-flex-center"
+            [routerLink]="['/routePath']"
+            routerLinkActive="router-link-active"
+          >
+            <div class="">
+              <h3>{{ category }}</h3>
+            </div>
+          </a>
+        </article>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</header>

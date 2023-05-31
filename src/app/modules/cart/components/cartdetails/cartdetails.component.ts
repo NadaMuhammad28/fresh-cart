@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cartdetails',
   templateUrl: './cartdetails.component.html',
-  styleUrls: ['./cartdetails.component.scss']
+  styleUrls: ['./cartdetails.component.scss'],
 })
-export class CartdetailsComponent {
-
-}
+export class CartdetailsComponent {}

@@ -12,7 +12,6 @@ export class CartService {
   getCartFromLocalStorage(): CartProduct[] {
     const cart: CartProduct[] =
       this.util.readFromLocalStorage<CartProduct[]>(this.cartKey) || [];
-    console.log(cart);
     return cart;
   }
   addToCart(product: CartProduct): void {

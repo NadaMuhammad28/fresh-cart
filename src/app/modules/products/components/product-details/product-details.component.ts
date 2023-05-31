@@ -1,6 +1,7 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from './../../../cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { CartProduct } from '../../models/cart-product';
@@ -14,41 +15,47 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductDetailsComponent implements OnInit {
   productQuantity: string = '1';
   productDetails!: Product;
+  noProductFound = false;
   constructor(
     private _productService: ProductService,
-    private route: ActivatedRoute,
+    private _route: ActivatedRoute,
     private _cartService: CartService,
-    private toastr: ToastrService
+    private _toastr: ToastrService,
+    private _spinner: NgxSpinnerService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
+    this._spinner.show();
     const id = this.getParamID();
-    console.log(id);
     if (id) this.fetchProductById(id);
+    else {
+      this._router.navigateByUrl('products');
+    }
   }
 
-  fetchProductById(id: string) {
+  private fetchProductById(id: string) {
     const self = this;
     const subscriber = {
       next(productDetails: Product) {
         self.productDetails = productDetails;
-        console.log(self.productDetails);
       },
-      error(err: string) {
-        console.log(err);
-        // alert(err);
+      error(error: string) {
+        self._toastr.error(error);
+        self.noProductFound = true;
+        self._spinner.hide();
+        self._router.navigateByUrl('');
       },
       complete() {
-        console.log('completed');
+        self._spinner.hide();
       },
     };
 
     this._productService.fetchProductById(id).subscribe(subscriber);
   }
 
-  getParamID(): string | null {
-    const id = this.route.snapshot.paramMap.get('id');
-    // log the ID to the console
+  private getParamID(): string | null {
+    const id = this._route.snapshot.paramMap.get('id');
     return id;
   }
   prepareCartProduct(): CartProduct {
@@ -63,10 +70,8 @@ export class ProductDetailsComponent implements OnInit {
   }
   onAddToCart() {
     const product = this.prepareCartProduct();
-    console.log(product);
-
     this._cartService.addToCart(product);
-    this.toastr.success(
+    this._toastr.success(
       `${this.productQuantity} item${
         +this.productQuantity > 1 ? 's' : ''
       } added to cart`

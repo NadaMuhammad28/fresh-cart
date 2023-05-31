@@ -5,15 +5,58 @@ footer {
 .footer-content-wrapper {
   gap: 2rem;
 }
-footer header {
-  gap: 0.5rem;
+.footer-content-wrapper h3 {
+  margin: 0;
+  text-transform: none;
 }
+// footer header {
+//   gap: 0.5rem;
+// }
 .app-link-form {
-  background-color: turquoise;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   padding: 0 1rem;
+  .app-link-email-field {
+    flex-basis: 85%;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    border: 0;
+    outline: 0;
+
+    &:focus {
+      border: solid 1px var(--clr-scondary-3) !important;
+    }
+  }
+  button {
+    background-color: var(--bg-clr-3);
+    color: var(--clr-secondry-2);
+
+    &:disabled {
+      background-color: rgba($color: #08ac0a, $alpha: 0.5);
+    }
+  }
 }
-footer header p {
-  color: var(--clr-secondary-1);
+.form-hint {
+  min-height: 2rem;
+  color: var(--clr-wraning-1);
+  padding: 0 1rem;
+  text-transform: capitalize;
+}
+input.ng-invalid.ng-touched {
+  border: 2px solid var(--clr-wraning-1) !important;
+}
+.payment-partners-wrapper {
+  align-items: center;
+  gap: 0.6rem;
+  h4 {
+    margin: 0;
+  }
+  img {
+    max-width: 100%;
+    // height: 2rem;
+    vertical-align: middle;
+    width: 3rem;
+    line-height: 24px;
+  }
 }

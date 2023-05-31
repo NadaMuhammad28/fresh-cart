@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 * {
   margin: 0;
   padding: 0;
@@ -8,20 +7,19 @@
 :root {
   --section-padding: 7rem 0;
   --wrapper-padding: 3rem 0;
-
   //p
   --clr-secondary-1: #959a9c;
   --clr-secondry-2: #fff;
+  --clr-scondary-3: #222;
+  --clr-secondary-4: #f1f1f1;
+  --clr-wraning-1: #f44336;
   // radius
   --border-radius: 5px;
   // footer
-
-  --bg-clr-2: #f0f3f2;
+  --bg-clr-2: #f0f2f1;
   --bg-clr-3: #08ac0a;
 }
-@mixin opacity($opacity) {
-  opacity: $opacity;
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -29,6 +27,7 @@ html {
 html,
 body {
   height: 100%;
+  color: var(--clr-scondary-3);
 }
 body {
   margin: 0;
@@ -58,34 +57,41 @@ body {
 }
 img {
   object-fit: cover;
+  vertical-align: middle;
 }
 
 h1.h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+a {
   text-transform: capitalize;
 }
 
-//
+h2 {
+  // font-size: 2.5rem;
+  font-weight: 600 !important;
+}
 
+.mat-typography h3 {
+  font-weight: 600;
+}
+
+//
+a {
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+}
+ul {
+  list-style: none;
+}
 .btn {
   cursor: pointer;
   border: 0;
   border-radius: var(--border-radius);
   background-color: transparent;
-}
-// custom-shared
-.auth-form {
-  width: 70%;
-}
-
-button {
-  align-self: flex-end;
-  background-color: var(--bg-clr-3);
-  color: var(--clr-secondry-2);
-}
-button:disabled {
-  @include opacity(0.5);
 }

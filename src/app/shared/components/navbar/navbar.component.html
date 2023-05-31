@@ -1,12 +1,16 @@
 <nav>
-  <div class="container nav-wrapper">
-    <div class="logo">Logo</div>
-    <div class="title">FreshCart</div>
-    <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/cart">Cart</a></li>
-      <li><a routerLink="/products">Products</a></li>
-      <li><a routerLink="/categories">Categories</a></li>
-    </ul>
+  <div class="container">
+    <div class="nav-container d-flex">
+      <a routerLink="" class="logo d-flex">
+        <img src="assets/navIcons/icon-cart.svg" alt="fresgcart" />
+        <span>FreshCart</span>
+        <!-- btn -->
+      </a>
+      <button class="sidebar-btn btn">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-nav-links></app-nav-links>
+      <app-social-links></app-social-links>
+    </div>
   </div>
 </nav>

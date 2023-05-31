@@ -1,3 +1,4 @@
+import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Injectable({
@@ -5,12 +6,15 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
   constructor(private angularFireAuth: AngularFireAuth) {}
-
-  register(email: string, password: string) {
+  registerWithEmailAndPassword(email: any, password: any) {
     return this.angularFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  signIn(email: string, password: string) {
-    return this.angularFireAuth.signInWithEmailAndPassword(email, password);
+  signInWihEmailAndPassword(user: User) {
+    return this.angularFireAuth.signInWithEmailAndPassword(
+      user.email,
+      user.password
+    );
   }
+  
 }

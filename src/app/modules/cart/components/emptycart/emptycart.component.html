@@ -1,1 +1,12 @@
-<p>emptycart works!</p>
+<section class="d-flex d-flex-center empty-cart-wrapper">
+  <div class="container">
+    <div class="empty-cart">
+      <img src="assets/empty-bag.png" alt="empty cart" />
+      <h4>your cart is empty</h4>
+
+      <button mat-raised-button type="button" fullWidth (click)="onClick()">
+        Start Shopping Now
+      </button>
+    </div>
+  </div>
+</section>

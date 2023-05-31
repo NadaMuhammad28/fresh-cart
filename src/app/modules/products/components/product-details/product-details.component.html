@@ -1,29 +1,22 @@
-<main class="section">
-  <div class="container">
-    <div
-      class="alert alert-danger"
-      *ngIf="!productDetails; else productWrapper"
-    >
-      product not found
-    </div>
-    <ng-template #productWrapper>
+<section class="section">
+  <div class="container d-flex d-flex-center">
+    <!-- <div *ngIf="noProductFound; else productWrapper">product not found</div> -->
+    <div *ngIf="productDetails.image" #productWrapper>
       <div class="product-wrapper">
         <!-- card left -->
-        <img [src]="productDetails.image" [alt]="productDetails.title" />
+        <div class="img-wrapper">
+          <img [src]="productDetails.image" [alt]="productDetails.title" />
+        </div>
         <!--  -->
         <!-- card right -->
         <article class="product-content">
-          <h1 class="mat-display-5">hello</h1>
           <h2 class="mat-h2 mat-title">{{ productDetails.title }}</h2>
           <app-product-reviews
             [productRating]="productDetails.rating"
           ></app-product-reviews>
-          <!-- ------------------------------------- -->
-          <div class="product-price">
-            <p class="new-price">
-              <span>{{ productDetails.price }} EGP</span>
-            </p>
-          </div>
+          <p class="new-price product-price">
+            {{ productDetails.price | usdToEgp | currency : "EGP " }}
+          </p>
 
           <div class="product-detail">
             <p>
@@ -44,6 +37,6 @@
           </div>
         </article>
       </div>
-    </ng-template>
+    </div>
   </div>
-</main>
+</section>

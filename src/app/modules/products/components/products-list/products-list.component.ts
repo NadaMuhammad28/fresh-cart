@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from '../../models/product';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
@@ -11,37 +13,39 @@ import { Subscription } from 'rxjs';
 export class ProductsListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   subscriptions: Subscription[] = [];
-  constructor(private _productService: ProductService) {}
+  constructor(
+    private _productService: ProductService,
+    private _spinner: NgxSpinnerService,
+    private _toastr: ToastrService
+  ) {}
   ngOnInit() {
     this.fetchAllProduct();
   }
 
-  fetchAllProduct() {
+  private fetchAllProduct() {
     let self = this;
     let subscriber = {
       next(productsList: Product[]) {
         self.products = productsList;
-        console.log(productsList);
       },
-      error(err: string) {
-        console.log(err);
-        alert(err);
+      error(error: string) {
+        self._toastr.error(error);
+        self._spinner.hide();
       },
       complete() {
-        console.log('completed');
+        self._spinner.hide();
       },
     };
+    self._spinner.show();
     let subscription = this._productService
-      .fetchProduct()
+      .fetchAllProducts()
       .subscribe(subscriber);
     this.subscriptions.push(subscription);
-
-    console.log(this.products);
   }
 
   ngOnDestroy() {
-    // for (let s of this.subscriptions) {
-    //   s.unsubscribe();
-    // }
+    for (let s of this.subscriptions) {
+      s.unsubscribe();
+    }
   }
 }

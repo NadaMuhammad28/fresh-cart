@@ -1,0 +1,13 @@
+@use "/src/scss/mixins.scss" as m;
+
+form {
+  width: 70%;
+  button {
+    align-self: flex-end;
+    background-color: var(--bg-clr-3);
+    color: var(--clr-secondry-2);
+  }
+  button:disabled {
+    @include m.opacity(0.5);
+  }
+}

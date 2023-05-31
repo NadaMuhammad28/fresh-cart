@@ -8,16 +8,16 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
-import { NoproductfallbackComponent } from './components/noproductfallback/noproductfallback.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
+import { UsdToEgpPipe } from './pipes/usd-to-egp.pipe';
 
 @NgModule({
   declarations: [
     ProductsListComponent,
     ProductCardComponent,
     ProductDetailsComponent,
-    NoproductfallbackComponent,
     ProductReviewsComponent,
+    UsdToEgpPipe,
   ],
   imports: [
     CommonModule,

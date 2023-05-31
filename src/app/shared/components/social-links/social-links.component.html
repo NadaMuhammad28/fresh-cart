@@ -1,0 +1,7 @@
+<ul class="social-links-container">
+  <li *ngFor="let link of socialMediaLinks">
+    <a [href]="link.path">
+      <img [src]="link.iconSrc" [alt]="link.name" />
+    </a>
+  </li>
+</ul>

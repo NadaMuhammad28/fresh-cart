@@ -1,7 +1,7 @@
 <main class="section">
   <div class="container d-flex d-flex-center">
     <form
-      class="d-flex d-flex-col auth-form"
+      class="d-flex d-flex-col"
       [formGroup]="registerForm"
       (ngSubmit)="onSubmit()"
     >
@@ -15,7 +15,7 @@
           [placeholder]="textField.placeHolder"
           fullWidth
           [formControlName]="textField.name"
-          [type]="textField?.type ? textField?.type : 'text'"
+          [type]="textField.type"
         />
       </mat-form-field>
 

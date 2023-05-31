@@ -1,0 +1,48 @@
+.empty-cart-wrapper {
+  padding: 7rem 2rem;
+}
+.empty-cart {
+  gap: 0.7rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  button {
+    background-color: var(--bg-clr-3);
+    color: var(--clr-secondry-2);
+  }
+}
+
+.empty-cart img {
+  width: 10rem;
+  max-width: 40rem;
+  animation-name: animated-bag;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  transition: all ease-in-out 0.5s;
+}
+.empty-cart h4 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+@keyframes animated-bag {
+  0% {
+    transform: translateY(-2%);
+  }
+  25% {
+    transform: translateY(-1%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(1%);
+  }
+  100% {
+    transform: translateY(2%);
+  }
+}

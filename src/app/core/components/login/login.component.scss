@@ -1,0 +1,11 @@
+form {
+  width: 70%;
+  button {
+    align-self: flex-end;
+    background-color: var(--bg-clr-3);
+    color: var(--clr-secondry-2);
+    &:disabled {
+      background-color: rgba($color: #08ac0a, $alpha: 0.5);
+    }
+  }
+}

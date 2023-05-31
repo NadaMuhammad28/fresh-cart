@@ -1,0 +1,11 @@
+<ul class="links-container d-flex">
+  <li *ngFor="let link of links">
+    <a
+      aria-current="page"
+      [routerLink]="link.path"
+      routerLinkActive="active-route"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >{{ link.name }}</a
+    >
+  </li>
+</ul>

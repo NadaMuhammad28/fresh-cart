@@ -17,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
     FormsModule,
     ToastrModule.forRoot(),
     CoreModule,
