@@ -6,7 +6,6 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,9 +17,8 @@ export class LoginComponent implements OnInit {
     private _authService: AuthService,
     private _utilityService: UtilityService,
     private _router: Router,
-    private _spinner: NgxSpinnerService, 
-        private toastr: ToastrService
-
+    private _spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -39,12 +37,13 @@ export class LoginComponent implements OnInit {
       );
       const { user } = userCredential;
       const token = await user?.getIdToken();
-      if (token) this._utilityService.writeToLocalStorage<string>('token', token);
-      this.toastr.success(
-      "logged In Succssefuly!"
-    );
+      if (token)
+        this._utilityService.writeToLocalStorage<string>('token', token);
+      this.toastr.success('logged In Succssefuly!');
       this._router.navigateByUrl('');
     } catch (e: any) {
+      this.toastr.error(e.message);
+
       console.log(e.message);
     } finally {
       console.log('completed');

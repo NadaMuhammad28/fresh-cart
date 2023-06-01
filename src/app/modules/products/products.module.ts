@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { UsdToEgpPipe } from './pipes/usd-to-egp.pipe';
 import { NgxStarsModule } from 'ngx-stars';
+import { CategoryProductscComponent } from './components/category-productsc/category-productsc.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NgxStarsModule } from 'ngx-stars';
     ProductDetailsComponent,
     ProductReviewsComponent,
     UsdToEgpPipe,
+    CategoryProductscComponent,
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,10 @@
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput placeholder="Email" fullWidth formControlName="email" />
+
+        <mat-error *ngIf="loginForm.get('email')?.invalid"
+          >Please enter a valid email
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -19,6 +23,10 @@
           fullWidth
           formControlName="password"
         />
+
+        <mat-error *ngIf="loginForm.get('password')?.invalid"
+          >Please enter your password
+        </mat-error>
       </mat-form-field>
 
       <button

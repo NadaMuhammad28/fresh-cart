@@ -9,7 +9,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
   constructor(private _http: HttpClient) {}
-  fetchAllProducts(category?: string): Observable<Product[]> {
+  fetchAllProducts(category: string | null): Observable<Product[]> {
     if (category) {
       return this.fetchAllProductsByCategory(category);
     } else {

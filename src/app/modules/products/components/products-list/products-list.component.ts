@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class ProductsListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   subscriptions: Subscription[] = [];
+  isProductRoute = false;
   constructor(
     private _productService: ProductService,
     private _spinner: NgxSpinnerService,
@@ -21,12 +22,18 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     private _route: ActivatedRoute
   ) {}
   ngOnInit() {
+    const routeConfig = this._route.snapshot.routeConfig;
+    if (routeConfig && routeConfig.path) {
+      this.isProductRoute = routeConfig.path.startsWith('products');
+      console.log(this.isProductRoute);
+    }
     const category = this.getParamCategory();
+    console.log(category);
 
-    if (category) this.fetchAllProduct(category);
+    this.fetchAllProduct(category);
   }
 
-  private fetchAllProduct(category: string) {
+  private fetchAllProduct(category: string | null) {
     let self = this;
     let subscriber = {
       next(productsList: Product[]) {

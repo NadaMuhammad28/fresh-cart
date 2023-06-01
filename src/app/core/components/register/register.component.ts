@@ -1,3 +1,4 @@
+import { UtilityService } from './../../../shared/utility/utility.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TextField } from '../../models/textField';
@@ -15,11 +16,17 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerationFormFields!: TextField[];
   registerForm!: FormGroup;
+  errorMessages = {
+    email: 'Please enter a valid email address',
+    password: 'Password must be at least 6 characters long',
+    repassword: 'Passwords do not match',
+  };
   constructor(
     private _authService: AuthService,
     private _router: Router,
     private _spinner: NgxSpinnerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _utilityService: UtilityService
   ) {
     this.registerationFormFields = [
       {
@@ -84,6 +91,15 @@ export class RegisterComponent implements OnInit {
         email,
         password
       );
+
+      // get token
+      const { user } = res;
+      const tokenResult = await user?.getIdTokenResult();
+      const token = tokenResult?.token;
+      console.log(token);
+      if (token)
+        this._utilityService.writeToLocalStorage<string>('token', token);
+
       this.toastr.success('Registered Succssefuly!');
       this._router.navigateByUrl('');
     } catch (e: any) {
@@ -92,5 +108,9 @@ export class RegisterComponent implements OnInit {
     } finally {
       this._spinner.hide();
     }
+  }
+
+  getErrorMessage(textFieldName: string) {
+    return this.errorMessages[textFieldName as keyof typeof this.errorMessages];
   }
 }

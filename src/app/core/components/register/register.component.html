@@ -17,6 +17,10 @@
           [formControlName]="textField.name"
           [type]="textField.type"
         />
+
+        <mat-error *ngIf="registerForm.get(textField.name)?.invalid">
+          {{ getErrorMessage(textField.name) }}
+        </mat-error>
       </mat-form-field>
 
       <button
