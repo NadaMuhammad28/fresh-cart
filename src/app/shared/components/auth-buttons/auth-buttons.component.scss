@@ -1,0 +1,12 @@
+.unauth-btns-container {
+  gap: 0.8rem;
+  font-weight: 500;
+  a {
+    padding: 0.4rem 0.3rem;
+  }
+}
+.signin-btn {
+  border-radius: 5px;
+  background-color: var(--bg-clr-3);
+  color: #fff;
+}
