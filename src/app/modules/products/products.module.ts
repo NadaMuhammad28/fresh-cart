@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { FormsModule } from '@angular/forms';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { UsdToEgpPipe } from './pipes/usd-to-egp.pipe';
+import { NgxStarsModule } from 'ngx-stars';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UsdToEgpPipe } from './pipes/usd-to-egp.pipe';
     AngularMaterialModule,
     ProductsRoutingModule,
     FormsModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
+    NgxStarsModule,
   ],
   exports: [ProductsListComponent],
 })

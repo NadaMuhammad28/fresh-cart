@@ -6,12 +6,13 @@ import { Rating } from '../../models/product';
   templateUrl: './product-reviews.component.html',
   styleUrls: ['./product-reviews.component.scss'],
 })
-export class ProductReviewsComponent implements OnInit {
-  @Input() productRating!: Rating | undefined;
+export class ProductReviewsComponent {
+  @Input() productRating: any = { rate: 0, count: 0 };
+  heartUrls = {
+    empty: '../assets/heart-empty.svg',
+    half: '../assets/heart-half.svg',
+    full: '../assets/heart-full.svg',
+  };
 
   constructor() {}
-
-  ngOnInit() {
-    console.log(this.productRating);
-  }
 }

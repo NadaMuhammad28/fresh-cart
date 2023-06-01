@@ -7,7 +7,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,9 +15,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerationFormFields!: TextField[];
   registerForm!: FormGroup;
-  constructor(private _authService: AuthService ,      private _router: Router,
-   private _spinner: NgxSpinnerService,         private toastr: ToastrService
-) {
+  constructor(
+    private _authService: AuthService,
+    private _router: Router,
+    private _spinner: NgxSpinnerService,
+    private toastr: ToastrService
+  ) {
     this.registerationFormFields = [
       {
         id: 1,
@@ -70,32 +72,25 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSubmit() {
-    this._spinner.show()
-    // Implement your login logic here
+    this._spinner.show();
     this.register();
   }
 
   private async register() {
     try {
-      const email = this.registerForm.get('email')?.value
-      const password = this.registerForm.get('password')?.value
+      const email = this.registerForm.get('email')?.value;
+      const password = this.registerForm.get('password')?.value;
       const res = await this._authService.registerWithEmailAndPassword(
         email,
         password
       );
-
-        this.toastr.success(
-      "Registered Succssefuly!"
-    );
-          this._router.navigateByUrl('');
-
-       
+      this.toastr.success('Registered Succssefuly!');
+      this._router.navigateByUrl('');
     } catch (e: any) {
+      this.toastr.error(e.message);
       console.log(e.message);
-    }
-
-    finally{
-  this._spinner.hide()
+    } finally {
+      this._spinner.hide();
     }
   }
 }

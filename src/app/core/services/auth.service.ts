@@ -16,5 +16,4 @@ export class AuthService {
       user.password
     );
   }
-  
 }

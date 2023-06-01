@@ -9,9 +9,13 @@ footer {
   margin: 0;
   text-transform: none;
 }
-// footer header {
-//   gap: 0.5rem;
-// }
+
+.footer-info {
+  padding: 1rem 0;
+  border-top: 1px solid var(--clr-secondary-1);
+  border-bottom: 1px solid var(--clr-secondary-1);
+}
+
 .app-link-form {
   display: flex;
   flex-direction: row;

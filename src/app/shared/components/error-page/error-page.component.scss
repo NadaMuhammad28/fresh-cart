@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.content {
+  text-align: center;
+}
+
+button {
+  background-color: var(--bg-clr-3) !important;
+  color: #fff !important;
+}

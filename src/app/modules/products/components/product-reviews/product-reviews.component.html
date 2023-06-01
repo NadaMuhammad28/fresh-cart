@@ -1,7 +1,7 @@
-<p>product-reviews works!</p>
-<mat-icon>star</mat-icon>
-<!-- Full star -->
-<mat-icon>star_half</mat-icon>
-<!-- Half star -->
-<mat-icon>star_border</mat-icon>
-<!-- Empty star -->
+<ngx-stars
+  [initialStars]="productRating.rate"
+  readOnly="true"
+  [maxStars]="5"
+  [readonly]="true"
+  [color]="'gold'"
+></ngx-stars>

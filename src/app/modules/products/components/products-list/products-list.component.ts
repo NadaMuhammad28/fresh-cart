@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from '../../models/product';
@@ -16,13 +17,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   constructor(
     private _productService: ProductService,
     private _spinner: NgxSpinnerService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _route: ActivatedRoute
   ) {}
   ngOnInit() {
-    this.fetchAllProduct();
+    const category = this.getParamCategory();
+
+    if (category) this.fetchAllProduct(category);
   }
 
-  private fetchAllProduct() {
+  private fetchAllProduct(category: string) {
     let self = this;
     let subscriber = {
       next(productsList: Product[]) {
@@ -37,12 +41,17 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       },
     };
     self._spinner.show();
+
     let subscription = this._productService
-      .fetchAllProducts()
+      .fetchAllProducts(category)
       .subscribe(subscriber);
     this.subscriptions.push(subscription);
   }
 
+  private getParamCategory(): string | null {
+    const category = this._route.snapshot.paramMap.get('category');
+    return category;
+  }
   ngOnDestroy() {
     for (let s of this.subscriptions) {
       s.unsubscribe();

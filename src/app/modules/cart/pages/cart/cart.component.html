@@ -1,2 +1,2 @@
 <app-emptycart *ngIf="cart && cart.length < 1" else cartDetails></app-emptycart>
-<app-cartdetails #cartDetails></app-cartdetails>
+<app-cartdetails #cartDetails [cart]="cart"></app-cartdetails>

@@ -1,0 +1,49 @@
+<section class="cart-pg-wrapper section">
+  <div class="container">
+    <mat-grid-list cols="12">
+      <mat-grid-tile *ngFor="let product of cart" [colspan]="7">
+        <div class="cart-list-wrapper">
+          <mat-grid-list cols="12">
+            <mat-grid-tile [colspan]="2">
+              <a [routerLink]="['/products', product.id]" class="img-container">
+                <img
+                  src="{{ product.image }}"
+                  class="p-img-cart"
+                  alt="{{ product.title }}"
+                />
+              </a>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="5" [rowspan]="1">
+              <div class="p-title-cart">
+                <h6>{{ product.title }}</h6>
+              </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="3" [rowspan]="1">
+              <div class="p-amount-container">
+                <div class="p-amount">
+                  <button>
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span>{{ product.quantity }} </span>
+                  <button>
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <small class="p-subtotal">
+                {{ +product.price * +product.quantity | currency }}
+              </small>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="12">
+              <hr class="p-bottom-border" />
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4"> </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</section>
